@@ -1,0 +1,9 @@
+This patches add support to RTL8723AE bt/wifi pci-e card into kernel 3.6.x
+To run this you should download a 3.6.x mainline kernel source and run:
+
+cd linux-3.6.x
+patch -p1 < ../<patch name>
+
+It should be good if it runs into the numerical order stablished on patches name.
+
+Any bug, please contact me: benatto at mandriva.com.br

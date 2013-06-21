@@ -1,0 +1,31 @@
+--- linux-3.6.3/drivers/net/wireless/rtlwifi/Kconfig	2012-10-21 14:32:56.000000000 -0200
++++ linux-3.6.3-devel/drivers/net/wireless/rtlwifi/Kconfig	2013-06-20 10:42:18.357449759 -0300
+@@ -1,3 +1,13 @@
++#--adding RTL8723AE Card SUPPORT--
++config RTL8723AE
++	tristate "Realtek RTL8723AE PCIe Wireless Network Adapter (Mandriva OEM Stagging)"
++	depends on MAC80211 && PCI && EXPERIMENTAL
++	select FW_LOADER
++	select RTLWIFI
++	---help---
++	This is the backport from rtl8723ae from 3.9.5 kernel to 3.6.3
++	any bug found should be reported to: benatto@mandriva.com.br
++
+ config RTL8192CE
+ 	tristate "Realtek RTL8192CE/RTL8188CE Wireless Network Adapter"
+ 	depends on MAC80211 && PCI && EXPERIMENTAL
+@@ -46,12 +56,12 @@
+ 
+ config RTLWIFI
+ 	tristate
+-	depends on RTL8192CE || RTL8192CU || RTL8192SE || RTL8192DE
++	depends on RTL8192CE || RTL8192CU || RTL8192SE || RTL8192DE || RTL8723AE
+ 	default m
+ 
+ config RTLWIFI_DEBUG
+ 	bool "Additional debugging output"
+-	depends on RTL8192CE || RTL8192CU || RTL8192SE || RTL8192DE
++	depends on RTL8192CE || RTL8192CU || RTL8192SE || RTL8192DE || RTL8723AE
+ 	default y
+ 
+ config RTL8192C_COMMON

@@ -1,0 +1,28 @@
+--- linux-3.6.3/include/net/mac80211.h	2012-10-21 14:32:56.000000000 -0200
++++ linux-3.6.3-devel/include/net/mac80211.h	2013-06-20 15:06:43.729237201 -0300
+@@ -1027,6 +1027,17 @@
+ };
+ 
+ /**
++ * enum ieee80211_sta_rx_bandwidth - station RX bandwidht
++ * TODO: PUT DOC HERE
++ * */
++enum ieee80211_sta_rx_bandwidth{
++	IEEE80211_STA_RX_BW_20 = 0,
++	IEEE80211_STA_RX_BW_40,
++	IEEE80211_STA_RX_BW_80,
++	IEEE80211_STA_RX_BW_160,
++};
++
++/**
+  * struct ieee80211_sta - station table entry
+  *
+  * A station table entry represents a station we are possibly
+@@ -1055,6 +1066,7 @@
+ 	bool wme;
+ 	u8 uapsd_queues;
+ 	u8 max_sp;
++	enum ieee80211_sta_rx_bandwidth bandwidth;
+ 
+ 	/* must be last */
+ 	u8 drv_priv[0] __attribute__((__aligned__(sizeof(void *))));
