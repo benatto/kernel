@@ -1,0 +1,12 @@
+--- linux/drivers/gpu/drm/radeon/radeon.h	2014-03-21 12:07:07.919187051 -0300
++++ linux-devel/drivers/gpu/drm/radeon/radeon.h	2014-03-24 17:51:59.824058427 -0300
+@@ -1543,6 +1543,9 @@
+ 	/* dpm */
+ 	bool                    dpm_enabled;
+ 	struct radeon_dpm       dpm;
++	/* FPS counter information */
++	u8						fps;
++	unsigned long			fps_timestamp;
+ };
+ 
+ int radeon_pm_get_type_index(struct radeon_device *rdev,
