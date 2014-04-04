@@ -1,0 +1,10 @@
+This patch is intended to make UKSM compatible with linux kernel >= 3.13.9,
+you should apply UKSM original patchset before apply this one
+
+The change was due to:
+668f9abb mm: close PageTail race commit
+
+It has changed the behaviour from compound_head function defined at mm.h to the same as compound_trans_head defined at huge_mm.h
+and demising the second one.
+
+Author: Marco A Benatto <benatto at mandriva dot com dot br>
