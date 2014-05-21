@@ -1,0 +1,28 @@
+diff --git a/drivers/gpu/drm/radeon/radeon.h b/drivers/gpu/drm/radeon/radeon.h
+index 6852861..948865d 100644
+--- a/drivers/gpu/drm/radeon/radeon.h
++++ b/drivers/gpu/drm/radeon/radeon.h
+@@ -1592,6 +1592,15 @@ int radeon_pm_get_type_index(struct radeon_device *rdev,
+ #define RADEON_UVD_STACK_SIZE	(1024*1024)
+ #define RADEON_UVD_HEAP_SIZE	(1024*1024)
+ 
++#define RADEON_FPS_EVENTS_MAX 5
++
++struct radeon_fps {
++	u8 fps_rate;
++	u8 fps_events[RADEON_FPS_EVENTS_MAX];
++	u8 event_index;
++	unsigned long fps_timestamp;
++};
++
+ struct radeon_uvd {
+ 	struct radeon_bo	*vcpu_bo;
+ 	void			*cpu_addr;
+@@ -1601,6 +1610,7 @@ struct radeon_uvd {
+ 	struct drm_file		*filp[RADEON_MAX_UVD_HANDLES];
+ 	unsigned		img_size[RADEON_MAX_UVD_HANDLES];
+ 	struct delayed_work	idle_work;
++	struct radeon_fps *fps_info;
+ };
+ 
+ int radeon_uvd_init(struct radeon_device *rdev);
